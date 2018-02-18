@@ -80,12 +80,6 @@ public class MainActivity extends AppCompatActivity {
                     final File cachedImageFile = new FileFinder().findFile(PRSApplication.client.cache().directory());
                     System.out.println("$$$$$$$$$$$$$$$$$$$$$$$ FILE = " + cachedImageFile + " thread = " + Thread.currentThread());
 
-                    // pass cachedFile to mapImageView, see toptal post on threading.
-                    // https://proandroiddev.com/architecture-components-modelview-livedata-33d20bdcc4e9
-                    // TODO move to github
-                    // TODO figure out why okhttp returns cached response without any HTTP request
-                    // ostatnia mapa z 9 lutego
-
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {

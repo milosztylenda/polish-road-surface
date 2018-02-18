@@ -1,0 +1,8 @@
+current:
+- figure out why okhttp returns cached response without any HTTP request
+
+- ostatnia mapa z 9 lutego
+
+old:
+- pass cachedFile to mapImageView, see toptal post on threading.
+- https://proandroiddev.com/architecture-components-modelview-livedata-33d20bdcc4e9
