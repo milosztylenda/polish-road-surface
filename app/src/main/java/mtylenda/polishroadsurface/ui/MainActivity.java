@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void downloadMapImage() {
         Request request = new Request.Builder()
-                //.url("http://publicobject.com/helloworld.txt")
                 .url("http://ssc.siskom.waw.pl/mapa-nawierzchni/mapa-nawierzchnia.png")
                 .build();
 

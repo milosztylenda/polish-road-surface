@@ -7,6 +7,7 @@ import com.github.piasy.biv.loader.fresco.FrescoImageLoader;
 
 import java.io.File;
 
+import mtylenda.polishroadsurface.service.CacheControlResponseInterceptor;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 
@@ -15,7 +16,7 @@ import okhttp3.OkHttpClient;
  */
 public class PRSApplication extends Application {
 
-    public static OkHttpClient client;// = new OkHttpClient();
+    public static OkHttpClient client;
 
     @Override
     public void onCreate() {
@@ -29,6 +30,7 @@ public class PRSApplication extends Application {
 
         client = new OkHttpClient.Builder()
                 .cache(cache)
+                .addNetworkInterceptor(new CacheControlResponseInterceptor())
                 .build();
 
     }
