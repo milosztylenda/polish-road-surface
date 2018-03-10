@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         mapImagePathViewModel = ViewModelProviders.of(this).get(LiveDataMapImagePathViewModel.class);
         mapImagePathViewModel.getMapImagePath().observe(this, mapImagePathObserver);
 
+        if (savedInstanceState != null) {
+            mapImageView.setImage(ImageSource.uri(mapImagePathViewModel.getMapImagePath().getValue()));
+            return;
+        }
+
         downloadMapImage();
     }
 
