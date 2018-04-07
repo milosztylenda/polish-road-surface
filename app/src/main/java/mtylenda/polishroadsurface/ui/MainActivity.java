@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
@@ -28,13 +30,14 @@ import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private ProgressBar progressBar;
     private SubsamplingScaleImageView mapImageView;
 
     private final Observer<String> mapImagePathObserver = new Observer<String>() {
 
         @Override
         public void onChanged(@Nullable String mapImagePath) {
+            progressBar.setVisibility(View.GONE);
             mapImageView.setImage(ImageSource.uri(mapImagePath));
         }
     };
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        progressBar = findViewById(R.id.progressBar);
         mapImageView = findViewById(R.id.imageView);
 
         mapImagePathViewModel = ViewModelProviders.of(this).get(LiveDataMapImagePathViewModel.class);
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        progressBar.setVisibility(View.VISIBLE);
         downloadMapImage();
     }
 
