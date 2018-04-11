@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mtylenda.polishroadsurface">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".PRSApplication"
         android:icon="@mipmap/ic_launcher"
@@ -16,8 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity2" />
-        <activity android:name=".ui.MainActivity3"></activity>
     </application>
 
 </manifest>

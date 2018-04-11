@@ -2,9 +2,6 @@ package mtylenda.polishroadsurface;
 
 import android.app.Application;
 
-import com.github.piasy.biv.BigImageViewer;
-import com.github.piasy.biv.loader.fresco.FrescoImageLoader;
-
 import java.io.File;
 
 import mtylenda.polishroadsurface.service.CacheControlResponseInterceptor;
@@ -21,7 +18,6 @@ public class PRSApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        BigImageViewer.initialize(FrescoImageLoader.with(this));
 
         int cacheSize = 10 * 1024 * 1024; // 10 MiB
         File cacheDirectory = new File(getCacheDir(), "okcache");
