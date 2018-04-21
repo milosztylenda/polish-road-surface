@@ -1,5 +1,6 @@
 current:
-- ostatnia mapa z 24 lutego
+- fix crash when map loading takes time and device rotates
+- implement ViewAnimator:  mob-empikapp-android / feature_browser/src/main/res/layout/mea_screen_fragment.xml
 
 done:
 - pass cachedFile to mapImageView, see toptal post on threading.
