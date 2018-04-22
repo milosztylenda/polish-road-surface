@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         mapImagePathViewModel.getMapImagePath().observe(this, mapImagePathObserver);
 
         if (savedInstanceState != null) {
+            boolean mapIsLoading = (progressBar.getVisibility() == View.VISIBLE);
+            if (mapIsLoading) {
+                return;
+            }
             mapImageView.setImage(ImageSource.uri(mapImagePathViewModel.getMapImagePath().getValue()));
             return;
         }

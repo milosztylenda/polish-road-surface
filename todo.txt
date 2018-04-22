@@ -1,6 +1,8 @@
 current:
-- fix crash when map loading takes time and device rotates
 - implement ViewAnimator:  mob-empikapp-android / feature_browser/src/main/res/layout/mea_screen_fragment.xml
+- make a rotating road sign as the progress bar
+- handle network errors
+- translate to Polskie wyboje
 
 done:
 - pass cachedFile to mapImageView, see toptal post on threading.
