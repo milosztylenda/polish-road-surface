@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.ImageViewState;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 
 import java.io.File;
@@ -30,6 +31,8 @@ import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String MAP_IMAGE_VIEW_STATE = "MapImageViewState";
+
     private ProgressBar progressBar;
     private SubsamplingScaleImageView mapImageView;
 
@@ -38,10 +41,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onChanged(@Nullable String mapImagePath) {
             progressBar.setVisibility(View.GONE);
-            mapImageView.setImage(ImageSource.uri(mapImagePath));
+            mapImageView.setImage(ImageSource.uri(mapImagePath), mapImageViewState);
         }
     };
     private LiveDataMapImagePathViewModel mapImagePathViewModel;
+    private ImageViewState mapImageViewState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +59,23 @@ public class MainActivity extends AppCompatActivity {
         mapImagePathViewModel.getMapImagePath().observe(this, mapImagePathObserver);
 
         if (savedInstanceState != null) {
-            boolean mapIsLoading = (progressBar.getVisibility() == View.VISIBLE);
-            if (mapIsLoading) {
-                return;
-            }
-            mapImageView.setImage(ImageSource.uri(mapImagePathViewModel.getMapImagePath().getValue()));
+            mapImageViewState = (ImageViewState) savedInstanceState.getSerializable(MAP_IMAGE_VIEW_STATE);
             return;
         }
 
         progressBar.setVisibility(View.VISIBLE);
         downloadMapImage();
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        ImageViewState state = mapImageView.getState();
+        if (state != null) {
+            outState.putSerializable(MAP_IMAGE_VIEW_STATE, mapImageView.getState());
+        }
     }
 
     private void downloadMapImage() {
