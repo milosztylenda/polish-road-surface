@@ -3,11 +3,13 @@ package mtylenda.polishroadsurface.ui;
 import android.annotation.TargetApi;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -20,6 +22,7 @@ import java.io.IOException;
 
 import mtylenda.polishroadsurface.PRSApplication;
 import mtylenda.polishroadsurface.R;
+import mtylenda.polishroadsurface.model.LiveDataLocationViewModel;
 import mtylenda.polishroadsurface.model.LiveDataMapImagePathViewModel;
 import mtylenda.polishroadsurface.service.FileFinder;
 import okhttp3.Call;
@@ -47,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
     private LiveDataMapImagePathViewModel mapImagePathViewModel;
     private ImageViewState mapImageViewState;
 
+    private Observer<Location> locationObserver = new Observer<Location>() {
+
+        @Override
+        public void onChanged(@Nullable Location location) {
+            Log.i(getLocalClassName(),"Location updated: " + location);
+        }
+    };
+    private LiveDataLocationViewModel liveDataLocationViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
         mapImagePathViewModel = ViewModelProviders.of(this).get(LiveDataMapImagePathViewModel.class);
         mapImagePathViewModel.getMapImagePath().observe(this, mapImagePathObserver);
+
+        liveDataLocationViewModel = ViewModelProviders.of(this).get(LiveDataLocationViewModel.class);
+        liveDataLocationViewModel.getLocation(this).observe(this, locationObserver);
 
         if (savedInstanceState != null) {
             mapImageViewState = (ImageViewState) savedInstanceState.getSerializable(MAP_IMAGE_VIEW_STATE);

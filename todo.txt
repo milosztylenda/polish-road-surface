@@ -2,7 +2,6 @@ current:
 - implement ViewAnimator:  mob-empikapp-android / feature_browser/src/main/res/layout/mea_screen_fragment.xml
 - make a rotating road sign as the progress bar
 - handle network errors
-- https://medium.com/google-developer-experts/services-the-life-with-without-and-worker-6933111d62a6
 
 done:
 - pass cachedFile to mapImageView, see toptal post on threading.
@@ -10,3 +9,5 @@ done:
 - figure out why okhttp returns cached response without any HTTP request,
   use network interceptor to add cache-control response header:
   https://github.com/square/okhttp/wiki/Interceptors
+- https://medium.com/google-developer-experts/services-the-life-with-without-and-worker-6933111d62a6
+- https://blog.stylingandroid.com/architecture-components-viewmodel/
