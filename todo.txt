@@ -2,6 +2,7 @@ current:
 - implement ViewAnimator:  mob-empikapp-android / feature_browser/src/main/res/layout/mea_screen_fragment.xml
 - make a rotating road sign as the progress bar
 - handle network errors
+- make it fullscreen
 
 done:
 - pass cachedFile to mapImageView, see toptal post on threading.
