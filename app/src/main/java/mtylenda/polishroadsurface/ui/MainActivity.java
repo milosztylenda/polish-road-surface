@@ -12,11 +12,11 @@ import android.widget.ProgressBar;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.ImageViewState;
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 
 import mtylenda.polishroadsurface.R;
 import mtylenda.polishroadsurface.model.LiveDataLocationViewModel;
 import mtylenda.polishroadsurface.model.LiveDataMapImagePathViewModel;
+import mtylenda.polishroadsurface.service.LocationToImageConverter;
 import mtylenda.polishroadsurface.service.MapImageDownloader;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String MAP_IMAGE_VIEW_STATE = "MapImageViewState";
 
     private ProgressBar progressBar;
-    private SubsamplingScaleImageView mapImageView;
+    private MapView mapImageView;
+    private LocationToImageConverter locationToImageConverter = new LocationToImageConverter();
 
     private final Observer<String> mapImagePathObserver = new Observer<String>() {
 
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onChanged(@Nullable Location location) {
             Log.i(getLocalClassName(),"Location updated: " + location);
+
+            mapImageView.setCurrentPosition(locationToImageConverter.convert(location));
         }
     };
 

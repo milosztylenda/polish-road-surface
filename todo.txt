@@ -3,6 +3,8 @@ current:
 - make a rotating road sign as the progress bar
 - handle network errors
 - make it fullscreen
+- ask for permissions
+- keep screen on
 
 done:
 - pass cachedFile to mapImageView, see toptal post on threading.
