@@ -2,6 +2,7 @@ current:
 - implement ViewAnimator:  mob-empikapp-android / feature_browser/src/main/res/layout/mea_screen_fragment.xml
 - make a rotating road sign as the progress bar
 - handle network errors
+  - java.net.UnknownHostException: Unable to resolve host "ssc.siskom.waw.pl": No address associated with hostname
 - make it fullscreen
 - ask for permissions
 - keep screen on

@@ -26,6 +26,7 @@ public class MapView extends SubsamplingScaleImageView {
 
     public void setCurrentPosition(PointF position) {
         currentPosition = position;
+        invalidate();
     }
 
     @Override
