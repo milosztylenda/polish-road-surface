@@ -34,6 +34,9 @@ public class LocationLiveData extends LiveData<Location> {
         FusedLocationProviderClient locationProviderClient = getFusedLocationProviderClient();
 
         LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setInterval(5 * 60 * 1000);
+        locationRequest.setFastestInterval(60 * 1000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         locationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
     }
 

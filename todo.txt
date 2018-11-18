@@ -5,7 +5,6 @@ current:
   - java.net.UnknownHostException: Unable to resolve host "ssc.siskom.waw.pl": No address associated with hostname
 - make it fullscreen
 - ask for permissions
-- keep screen on
 
 done:
 - pass cachedFile to mapImageView, see toptal post on threading.
@@ -15,3 +14,4 @@ done:
   https://github.com/square/okhttp/wiki/Interceptors
 - https://medium.com/google-developer-experts/services-the-life-with-without-and-worker-6933111d62a6
 - https://blog.stylingandroid.com/architecture-components-viewmodel/
+- keep screen on
